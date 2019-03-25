@@ -6,6 +6,6 @@ require_all "lib"
 
 ActiveRecord::Base.establish_connection(
 adapter: "sqlite3",
-database: "db/library.db"
+database: "db/fantasy.db"
 )
-# binding.pry
+binding.pry
