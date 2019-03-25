@@ -1,4 +1,4 @@
-class Character < ActiveRecord::Migration[5.2]
+class CreateCharacterTable < ActiveRecord::Migration[5.2]
   def change
     create_table :characters do |t|
       t.text :name
