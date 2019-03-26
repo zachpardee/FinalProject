@@ -1,5 +1,6 @@
 Character.destroy_all
 Player.destroy_all
+PlayerCharacter.destroy_all
 
 
 yara = Character.create(name:"Yara Greyjoy", status: "alive")
