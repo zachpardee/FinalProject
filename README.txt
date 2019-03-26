@@ -9,8 +9,8 @@ Filename Description: This file contains the readme for the Game of Thrones
 
 1. As a user, I want to be able to draft a character
 
-2. As a user, I want to be able to see the characters I drafted.
+2. As a user, I want to be able to be able to view my current score.
 
-3. As a user, I want to be able to see who drafted a specific character.
+3. As a user, I want to be able to see the characters I drafted.
 
-4. As a user, I want to be able to change a characters status.
+4. As a user, I want to be able to see who drafted a specific character.
