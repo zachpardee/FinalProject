@@ -6,7 +6,6 @@ class Player < ActiveRecord::Base
   def calc_score
   PlayerCharacter.all.select do |draftpick|
     if(draftpick.player.name == self.name)
-      draftpick.player == self
         if (draftpick.predictedstatus == Character.find_by(name:draftpick.character.name).status)
           self.score += 1
           save self
