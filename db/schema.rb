@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2019_03_25_201719) do
   create_table "player_characters", force: :cascade do |t|
     t.integer "player_id"
     t.integer "character_id"
+    t.text "predictedstatus"
     t.index ["character_id"], name: "index_player_characters_on_character_id"
     t.index ["player_id"], name: "index_player_characters_on_player_id"
   end
