@@ -10,10 +10,7 @@ database: "db/fantasy.db"
 )
 
 
-# def draft_player(player, character, predictedstatus)
-#   PlayerCharacter.create(player: player, character: character)
-# end
-#
+
 # draft_player(zach, sansa, "dead")
 # draft_player(zach, sansa, "alive")
 #
