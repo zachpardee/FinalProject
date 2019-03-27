@@ -118,15 +118,20 @@ def delete_draft_pick
   user_player = gets.chomp
   Player.all.select do |player|
     if (player.name == user_player)
-      binding.pry
       player.view_characters_drafted
     end
   end
+
   puts "Select the character to delete please:"
   user_character = gets.chomp
+
+  puts "Please enter alive or dead for the characters status:"
+  user_status = gets.chomp
   PlayerCharacter.all.map do |playercharacter|
-    if(playercharacter.player.name == user_player && playercharacter.character.name == user_character)
-      binding.pry
+    if(playercharacter.player.name == user_player &&
+      playercharacter.character.name == user_character &&
+      playercharacter.predictedstatus == user_status)
+      #Remove the draftpick from the database
       playercharacter.destroy
     end
   end
