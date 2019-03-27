@@ -16,7 +16,7 @@ def play_game
   response = gets.chomp
 
   case response.downcase
-  when "New Draft"
+  when "new draft"
     PlayerCharacter.destroy_all #Clear all prior draft picks
     # Set number draft picks
     number_of_draft_picks = 1
@@ -62,13 +62,7 @@ def admin_controls
       end
 end
 
-def verify_admin
-  puts "Please enter password"
-  user_input = gets.chomp
-  if( user_input == "Scooby")
-    admin_controls
-  end
-end
+
 def draft_a_character
   list_all_players
   puts "\nPlease enter your name: "
@@ -110,6 +104,14 @@ def view_all_draft_picks
     puts "Player name: #{draftpick.player.name}
      Character selection: #{draftpick.character.name}
      Predicted Status: #{draftpick.predictedstatus}"
+  end
+end
+
+def verify_admin
+  puts "Please enter password:"
+  user_input = gets.chomp
+  if( user_input == "Scooby")
+    admin_controls
   end
 end
 
