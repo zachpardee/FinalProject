@@ -2,7 +2,7 @@ require_relative "./config/environment"
 
 def play_game
 
-  puts "Menu: \n
+  puts "\nMenu: \n
   New Draft
   Admin
   View Current Players
@@ -40,7 +40,7 @@ def play_game
 end
 
 def admin_controls
-      puts "Admin Controls:
+      puts "\nAdmin Controls:
       Create a player
       Create a character
       Delete a player
