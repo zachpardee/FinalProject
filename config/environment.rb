@@ -21,6 +21,7 @@ def play_game
       puts player.name
     end
     puts "\nPlease enter your name: "
+    #if response = admin, enter admin console to kill characters, add players, etc.
     response = gets.chomp
     player = Player.find_by(name:response)
     Character.all.each do |character|
@@ -36,8 +37,20 @@ def play_game
       predictedstatus: dead_or_alive)
   end
 
+  # display player scores
+
+  def display_scores
+  end
+  # kill a character and recalculate player scores
+  # display new player scores
+  # add a administrator command
+
+
+  # add api to set status of characters
+
 end
 
 play_game
+display_scores
 
 binding.pry
