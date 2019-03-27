@@ -24,7 +24,7 @@ def play_game
       draft_a_character
     end
   when "admin"
-    admin_controls
+    verify_admin
   when "view current players"
     list_all_players
   when "view current characters"
@@ -62,6 +62,13 @@ def admin_controls
       end
 end
 
+def verify_admin
+  puts "Please enter password"
+  user_input = gets.chomp
+  if( user_input == "Scooby")
+    admin_controls
+  end
+end
 def draft_a_character
   list_all_players
   puts "\nPlease enter your name: "
