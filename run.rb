@@ -45,6 +45,8 @@ def admin_controls
       Create a character
       Delete a player
       Delete a Character
+      Kill a Character
+      Delete a draftpick
       Exit
       "
       user_input = gets.chomp
@@ -57,6 +59,10 @@ def admin_controls
         admin_delete_player
       when "delete a character"
         admin_delete_character
+      when "kill a character"
+        admin_kill_character
+      when "delete a draftpick"
+        delete_draft_pick
       when "exit"
         return
       end
@@ -107,10 +113,40 @@ def view_all_draft_picks
   end
 end
 
+def delete_draft_pick
+  puts "Please enter the name of the player you wish to delete a draft pick from"
+  user_player = gets.chomp
+  Player.all.select do |player|
+    if (player.name == user_player)
+      binding.pry
+      player.view_characters_drafted
+    end
+  end
+  puts "Select the character to delete please:"
+  user_character = gets.chomp
+  PlayerCharacter.all.map do |playercharacter|
+    if(playercharacter.player.name == user_player && playercharacter.character.name == user_character)
+      binding.pry
+      playercharacter.destroy
+    end
+  end
+end
+
+def get_user_player_characters
+  puts "Please enter the name of the player you wish to delete a draft pick from"
+  user_input = gets.chomp
+  Player.all.select do |player|
+    if (player.name == user_input)
+      binding.pry
+      player.view_characters_drafted
+    end
+  end
+end
+
 def verify_admin
   puts "Please enter password:"
   user_input = gets.chomp
-  if( user_input == "Scooby")
+  if(user_input == "Scooby")
     admin_controls
   end
 end

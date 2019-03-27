@@ -23,7 +23,7 @@ class Player < ActiveRecord::Base
           charactersDrafted << draftpick.character.name
         end
       end
-      charactersDrafted
+      puts charactersDrafted
   end
 
   def self.display_player_scores
