@@ -71,17 +71,29 @@ end
 
 def draft_a_character
   list_all_players
-  puts "\nPlease enter your name: "
-  #if response = admin, enter admin console to kill characters, add players, etc.
-  response = gets.chomp
+  response = ''
+  while (Player.all.map {|player| player.name}.exclude? response) do
+    puts "\nPlease enter your name: "
+    #if response = admin, enter admin console to kill characters, add players, etc.
+    response = gets.chomp
+  end
   player = Player.find_by(name:response)
   Character.all.each do |character|
     puts character.name
   end
-  puts "\nEnter your character selection: "
-  character = gets.chomp()
-  puts "alive or dead?"
-  dead_or_alive = gets.chomp
+
+  character = ''
+  while (Character.all.map {|char|char.name}.exclude? character) do
+    puts "\nEnter your character selection: "
+    character = gets.chomp()
+  end
+
+  dead_or_alive = ''
+  while (dead_or_alive != ("alive" || "dead")) do
+    puts "alive or dead?"
+    dead_or_alive = gets.chomp
+  end
+
   PlayerCharacter.create(
     player: player,
     character: Character.find_by(name:character),
