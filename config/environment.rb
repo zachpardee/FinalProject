@@ -16,7 +16,7 @@ def play_game
 
   # First Draft Pick
 
-  5.times do
+  1.times do
     Player.all.each do |player|
       puts player.name
     end
@@ -42,6 +42,17 @@ def play_game
   def display_scores
   end
   # kill a character and recalculate player scores
+
+  def kill_character
+    puts "Please enter the character you wish to die."
+    dead_character = gets.chomp()
+    Character.find_by(name: dead_character).status = "dead"
+    
+  end
+
+  def all_players_score
+    Player.all.map(&:calc_score)
+  end
   # display new player scores
   # add a administrator command
 
