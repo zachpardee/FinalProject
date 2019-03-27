@@ -14,9 +14,9 @@ class Character < ActiveRecord::Base
   end
 
   def self.kill_character(character_name)
-    self.all.select do |character|
+    Character.all.select do |character|
       if (character.name == character_name)
-        character.status = "dead"
+        Character.update(character.id, status: "dead")
       end
     end
   end
