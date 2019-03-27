@@ -14,9 +14,11 @@ def play_game
 
   PlayerCharacter.destroy_all
 
-  # First Draft Pick
+  # Set number draft picks
+  number_of_draft_picks = 1
 
-  1.times do
+
+  number_of_draft_picks.times do
     Player.all.each do |player|
       puts player.name
     end

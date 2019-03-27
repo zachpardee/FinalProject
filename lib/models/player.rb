@@ -5,6 +5,7 @@ class Player < ActiveRecord::Base
 
   def calc_score
   PlayerCharacter.all.select do |draftpick|
+    self.score = 0
     if(draftpick.player.name == self.name)
         if (draftpick.predictedstatus == Character.find_by(name:draftpick.character.name).status)
           self.score += 1
@@ -25,8 +26,11 @@ class Player < ActiveRecord::Base
       charactersDrafted
   end
 
-  def display_player_scores
-
+  def self.display_player_scores
+    calc_score
+    Player.all.each do |player|
+      puts player.name + "'s Score is: " + player.score.to_s
+    end
   end
 
 end
