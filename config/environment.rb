@@ -11,13 +11,9 @@ database: "db/fantasy.db"
 
 
 def play_game
-
-  PlayerCharacter.destroy_all
-
+  PlayerCharacter.destroy_all #Clear all prior draft picks
   # Set number draft picks
   number_of_draft_picks = 1
-
-
   number_of_draft_picks.times do
     Player.all.each do |player|
       puts player.name
@@ -38,29 +34,23 @@ def play_game
       character: Character.find_by(name:character),
       predictedstatus: dead_or_alive)
   end
-
-  # display player scores
-
-  def display_scores
-  end
-  # kill a character and recalculate player scores
-
-  def admin_kill_character
-    puts "Please enter the character you wish to die."
-    dead_character = gets.chomp()
-    Character.kill_character(dead_character)
-  end
-
-  def all_players_score
-    Player.all.map(&:calc_score)
-  end
-  # display new player scores
-  # add a administrator command
-
-
-  # add api to set status of characters
-
 end
+
+def display_scores
+  Player.display_player_scores
+end
+
+def admin_kill_character
+  puts "Please enter the character you wish to die."
+  dead_character = gets.chomp()
+  Character.kill_character(dead_character)
+end
+
+def all_players_score
+  Player.all.map(&:calc_score)
+end
+
+# add api to set status of characters
 
 play_game
 display_scores

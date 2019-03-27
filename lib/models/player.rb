@@ -32,6 +32,4 @@ class Player < ActiveRecord::Base
       puts player.name + "'s Score is: " + player.score.to_s
     end
   end
-
-
 end
