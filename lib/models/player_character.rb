@@ -6,4 +6,7 @@ class PlayerCharacter < ActiveRecord::Base
   def inspect
     "Player: #{self.player.name}, \nCharacter: #{self.character.name}, \nPredicted Status: #{self.predictedstatus}"
   end
+
+
+
 end

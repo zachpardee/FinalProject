@@ -24,7 +24,7 @@ def play_game
       draft_a_character
     end
   when "admin"
-    binding.pry
+    admin_controls
   when "view current players"
     list_all_players
   when "view current characters"
@@ -37,6 +37,29 @@ def play_game
     return
   end
   play_game
+end
+
+def admin_controls
+      puts "Admin Controls:
+      Create a player
+      Create a character
+      Delete a player
+      Delete a Character
+      Exit
+      "
+      user_input = gets.chomp
+      case user_input.downcase
+      when "create a player"
+        admin_create_player
+      when "create a character"
+        admin_create_character
+      when "delete a player"
+        admin_delete_player
+      when "delete a character"
+        admin_delete_character
+      when "exit"
+        return
+      end
 end
 
 def draft_a_character
