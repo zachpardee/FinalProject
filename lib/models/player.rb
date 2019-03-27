@@ -25,4 +25,8 @@ class Player < ActiveRecord::Base
       charactersDrafted
   end
 
+  def display_player_scores
+
+  end
+
 end

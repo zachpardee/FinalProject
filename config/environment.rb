@@ -43,11 +43,10 @@ def play_game
   end
   # kill a character and recalculate player scores
 
-  def kill_character
+  def admin_kill_character
     puts "Please enter the character you wish to die."
     dead_character = gets.chomp()
-    Character.find_by(name: dead_character).status = "dead"
-    
+    Character.kill_character(dead_character)
   end
 
   def all_players_score
@@ -63,5 +62,6 @@ end
 
 play_game
 display_scores
+
 
 binding.pry

@@ -13,4 +13,12 @@ class Character < ActiveRecord::Base
       players_who_drafted
   end
 
+  def self.kill_character(character_name)
+    self.all.select do |character|
+      if (character.name == character_name)
+        character.status = "dead"
+      end
+    end
+  end
+
 end
