@@ -22,7 +22,7 @@ class Player < ActiveRecord::Base
           charactersDrafted << draftpick.character.name
         end
       end
-        charactersDrafted
+      charactersDrafted
   end
 
 end
