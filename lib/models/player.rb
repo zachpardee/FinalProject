@@ -4,15 +4,14 @@ class Player < ActiveRecord::Base
 
 
   def self.calc_score
-  PlayerCharacter.all.select do |draftpick|
-    if(draftpick.player.name == self.name)
-      self.score = 0
-      save self
-        if (draftpick.predictedstatus == Character.find_by(name:draftpick.character.name).status)
-          self.score += 1
-          save self
-        end
+    Player.all.map do |player|
+      Player.update(player.id, score: 0)
+    end
+    PlayerCharacter.all.map do |draftpick|
+      if(draftpick.character.status == draftpick.predictedstatus)
+        Player.update(draftpick.player.id, score: draftpick.player.score+1)
       end
+
     end
   end
 
@@ -34,5 +33,5 @@ class Player < ActiveRecord::Base
     end
   end
 
-  
+
 end
