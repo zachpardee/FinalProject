@@ -21,4 +21,12 @@ class Character < ActiveRecord::Base
     end
   end
 
+  def self.revive_character(character_name)
+    Character.all.select do |character|
+      if (character.name == character_name)
+        Character.update(character.id, status: "alive")
+      end
+    end
+  end
+
 end

@@ -46,6 +46,7 @@ def admin_controls
       Delete a player
       Delete a Character
       Kill a Character
+      Revive a Character
       Delete a draftpick
       Exit
       "
@@ -61,6 +62,8 @@ def admin_controls
         admin_delete_character
       when "kill a character"
         admin_kill_character
+      when "revive a character"
+        admin_revive_character
       when "delete a draftpick"
         delete_draft_pick
       when "exit"
@@ -109,7 +112,7 @@ end
 
 def list_all_characters
   Character.all.each do |character|
-    puts character.name
+    puts character.name.ljust(20) + "Status: " + character.status
   end
 end
 
@@ -154,7 +157,6 @@ def get_user_player_characters
   user_input = gets.chomp
   Player.all.select do |player|
     if (player.name == user_input)
-      binding.pry
       player.view_characters_drafted
     end
   end
@@ -185,6 +187,12 @@ def admin_kill_character
   puts "Please enter the character you wish to die."
   dead_character = gets.chomp
   Character.kill_character(dead_character)
+end
+
+def admin_revive_character
+  puts "Please enter the character you wish to revive."
+  dead_character = gets.chomp
+  Character.revive_character(dead_character)
 end
 
 
