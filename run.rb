@@ -17,7 +17,7 @@ def play_game
 
   case response.downcase
   when "new draft"
-    PlayerCharacter.destroy_all #Clear all prior draft picks
+     PlayerCharacter.destroy_all #Clear all prior draft picks
     # Set number draft picks
     number_of_draft_picks = 1
     number_of_draft_picks.times do
@@ -80,28 +80,55 @@ def draft_a_character
     #if response = admin, enter admin console to kill characters, add players, etc.
     response = gets.chomp
   end
-  player = Player.find_by(name:response)
-  Character.all.each do |character|
-    puts character.name
+
+  loop do
+
+    player = Player.find_by(name:response)
+    Character.all.each do |character|
+      puts character.name
+    end
+
+    character = ''
+    while (Character.all.map {|char|char.name}.exclude? character) do
+      puts "\nEnter your character selection: "
+      character = gets.chomp()
+    end
+
+    dead_or_alive = ''
+    while (dead_or_alive != "alive" && dead_or_alive != "dead") do
+      puts "alive or dead?"
+      dead_or_alive = gets.chomp
+    end
+
+    keep_loop = true
+    player_array = PlayerCharacter.all.select {|playercharacter| playercharacter.player.name == response}
+    if(player_array.length > 0 )
+      status_array = player_array.select {|playerchar| playerchar.predictedstatus == dead_or_alive}
+      if(status_array.length >= 3 )
+        puts "You have already drafted 3 players to be : #{dead_or_alive}"
+        puts "\n\n Please try again...\n\n"
+
+        puts "Please enter your name: "
+        #if response = admin, enter admin console to kill characters, add players, etc.
+        response = gets.chomp
+        keep_loop = false
+      end
+    end
+
+    if(player_array.length < 7)
+      PlayerCharacter.create(
+        player: player,
+        character: Character.find_by(name:character),
+        predictedstatus: dead_or_alive)
+    end
+
+  break if keep_loop
+
   end
 
-  character = ''
-  while (Character.all.map {|char|char.name}.exclude? character) do
-    puts "\nEnter your character selection: "
-    character = gets.chomp()
-  end
 
-  dead_or_alive = ''
-  while (dead_or_alive != "alive" && dead_or_alive != "dead") do
-    puts "alive or dead?"
-    dead_or_alive = gets.chomp
-  end
-
-  PlayerCharacter.create(
-    player: player,
-    character: Character.find_by(name:character),
-    predictedstatus: dead_or_alive)
 end
+
 
 
 def list_all_players
