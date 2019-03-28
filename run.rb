@@ -92,7 +92,7 @@ def draft_a_character
   end
 
   dead_or_alive = ''
-  while (dead_or_alive != ("alive" || "dead")) do
+  while (dead_or_alive != "alive" && dead_or_alive != "dead") do
     puts "alive or dead?"
     dead_or_alive = gets.chomp
   end
