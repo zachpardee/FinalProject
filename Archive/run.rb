@@ -1,7 +1,4 @@
-
-
 require_relative "./config/environment"
-
 
 def play_game
 
@@ -20,7 +17,7 @@ def play_game
 
   case response.downcase
   when "new draft"
-    PlayerCharacter.destroy_all #Clear all prior draft picks
+     # PlayerCharacter.destroy_all #Clear all prior draft picks
     # Set number draft picks
     number_of_draft_picks = 1
     number_of_draft_picks.times do
@@ -149,9 +146,9 @@ end
 
 def view_all_draft_picks
   PlayerCharacter.all.each do |draftpick|
-    puts "\n\tPlayer name: #{draftpick.player.name}
-\tCharacter selection: #{draftpick.character.name}
-\tPredicted Status: #{draftpick.predictedstatus}"
+    puts "\n\n\n          Player name: #{draftpick.player.name}
+          Character selection: #{draftpick.character.name}
+          Predicted Status: #{draftpick.predictedstatus}\n\n\n"
   end
 end
 

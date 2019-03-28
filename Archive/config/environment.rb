@@ -8,5 +8,3 @@ ActiveRecord::Base.establish_connection(
 adapter: "sqlite3",
 database: "db/fantasy.db"
 )
-
-ActiveRecord::Base.logger.level = 1
