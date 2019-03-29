@@ -11,3 +11,5 @@ gem "sqlite3", "~> 1.4"
 gem "activerecord", "~> 5.2"
 gem "sinatra", "~> 2.0"
 gem "sinatra-activerecord", "~> 2.0"
+
+gem "colored", "~> 1.2"
