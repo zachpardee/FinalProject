@@ -149,8 +149,8 @@ end
 
 def view_all_draft_picks
   PlayerCharacter.all.each do |draftpick|
-    puts "\n\tPlayer name: #{draftpick.player.name}.green
-\tCharacter selection: #{draftpick.character.name}.green
+    puts "\n\tPlayer name: #{draftpick.player.name}
+\tCharacter selection: #{draftpick.character.name}
 \tPredicted Status: #{draftpick.predictedstatus}".green
   end
 end
